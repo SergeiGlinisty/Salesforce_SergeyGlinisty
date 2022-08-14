@@ -8,7 +8,7 @@ public class HomePage extends BasePage {
     public final static By LEADS_TAB_LOCATOR = By.xpath("//*[@title='Leads']");
     public final static By ACCOUNTS_TAB_LOCATOR = By.xpath("//a[@title='Accounts']");
 
-
+    public final static By CONTACTS_TAB_LOCATOR = By.xpath("//a[@title='Contacts']");
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -32,5 +32,9 @@ public class HomePage extends BasePage {
 
     public void openAccountsTab() {
         jsClick(driver.findElement(ACCOUNTS_TAB_LOCATOR));
+    }
+
+    public void openContactsTab() {
+        jsClick(driver.findElement(CONTACTS_TAB_LOCATOR));
     }
 }

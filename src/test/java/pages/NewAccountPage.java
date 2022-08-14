@@ -10,8 +10,8 @@ public class NewAccountPage extends BasePage {
     public final static By ICON_LOCATOR_NEW_ACCOUNT = By.xpath("//h2[text()='New Account']");
     public final static By WEBSITE = By.xpath("//input[@type='url']");
     public final static By ACCOUNT_NAME = By.xpath("//input[@class='default input uiInput uiInputTextForAutocomplete uiInput--default uiInput--input uiInput uiAutocomplete uiInput--default uiInput--lookup']");
-    public final static By TYPE_BUTTON = By.xpath("//a[@class='select']/ancestor::div[@class='isModal inlinePanel oneRecordActionWrapper']");
-    public final static By TYPE = By.xpath("//a[@role='menuitemradio' and text()='Other']");
+    public final static By TYPE_BUTTON = By.xpath("//a[@class='select']");
+    public final static By TYPE = By.xpath("//a[@title='Customer']");
     public final static By BILLING_STREET = By.xpath("//textarea[@placeholder='Billing Street']");
 
     public final static By SAVE_ACCOUNT_BUTTON = By.xpath("//button[@title='Save']");

@@ -16,7 +16,7 @@ public class NewLeadPage extends BasePage {
     public final static By COMPANY = By.xpath("//input[@name='Company']");
     public final static By LEAD_STATUS_BUTTON = By.xpath("//button[@aria-label='Lead Status, New']");
 
-    public final static By STATUS_BUTTON = By.xpath("//lightning-base-combobox-item[@data-value='New']");
+    public final static By STATUS_BUTTON = By.xpath("//lightning-base-combobox-item[@data-value='Contacted']");
     public final static By SaveButton = By.xpath("//button[@name='SaveEdit']");
 
     public NewLeadPage(WebDriver driver) {

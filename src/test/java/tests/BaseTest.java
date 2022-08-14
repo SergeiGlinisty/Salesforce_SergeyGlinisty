@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
+import pages.modals.NewAccountModal;
+import pages.modals.NewContactModal;
+import pages.modals.NewLeadModal;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +21,13 @@ public class BaseTest {
 
     protected AccountsPage accountsPage;
     protected NewAccountPage newAccountPage;
+    protected NewLeadModal newLeadModal;
+    protected LeadDetailsPage leadDetailsPage;
+    protected AccountDetailsPage accountDetailsPage;
+    protected NewAccountModal newAccountModal;
+    protected ContactDetailsPage contactDetailsPage;
+    protected ContactsPage contactsPage;
+    protected NewContactModal newContactModal;
 
     @BeforeClass(alwaysRun = true)
     public void setUp(ITestContext testContext) throws Exception {
