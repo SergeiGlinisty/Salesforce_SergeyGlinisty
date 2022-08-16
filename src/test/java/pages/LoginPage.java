@@ -3,9 +3,11 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static constants.Constants.WEBSITE;
+
 public class LoginPage extends BasePage {
 
-    private final static String URL = "https://stroymol.my.salesforce.com";
+ //   private final static String URL = "https://stroymol.my.salesforce.com/";
     private final static By usernameInput = By.cssSelector("input#username");
     private final static By passwordInput = By.cssSelector("input#password");
     private final static By loginButton = By.xpath("//input[@value='Log In']");
@@ -32,6 +34,6 @@ public class LoginPage extends BasePage {
     }
 
     public void open() {
-        driver.get(URL);
+        driver.get(WEBSITE);
     }
 }
