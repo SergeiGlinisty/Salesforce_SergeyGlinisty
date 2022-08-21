@@ -26,9 +26,10 @@ public class AccountDropDown extends BaseElement {
         WebElement option = driver.findElement(By.xpath(String.format(DROPDOWN_LOCATOR, visibleText)));
         if (Objects.nonNull(visibleText)) {
             scrollIntoView(option);
-            System.out.printf("Setting %s input value = %s", label, visibleText);
+            log.info("Setting %s input value = %s", label, visibleText);
+            option.click();
         }
-        option.click();
+
     }
 
 }

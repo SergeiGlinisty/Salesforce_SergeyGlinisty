@@ -17,9 +17,5 @@ public class AccountsPage extends EntityBasePage {
         waitForElementDisplayed(ACCOUNTS_PAGE_LOCATOR);
     }
 
-    public String getLAccountNameText() {
-        return driver.findElement(NEW_ACCOUNT).getText();
-    }
-
 
 }

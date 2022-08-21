@@ -1,14 +1,15 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import elements.models.Lead;
 import enums.Industry;
 import enums.LeadSource;
-import enums.LeadStatus;
 import enums.Rating;
 import lombok.extern.log4j.Log4j2;
-import models.Lead;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LeadDetailsPage;
 import pages.LeadsPage;
@@ -17,10 +18,10 @@ import pages.modals.NewLeadModal;
 import static constants.Constants.NewLead.*;
 import static constants.Constants.PASSWORD;
 import static constants.Constants.USERNAME;
+import static enums.LeadStatus.QUALIFIED;
 
 @Log4j2
 public class LeadsTests extends BaseTest {
-
 
     @BeforeClass
     public void initialise() {
@@ -30,8 +31,14 @@ public class LeadsTests extends BaseTest {
         newLeadModal = new NewLeadModal(driver);
     }
 
-    @Test
-    public void createNewLeadTest() {
+    @AfterMethod(alwaysRun = true)
+    public void logout() {
+        homePage.logout();
+        loginPage.waitForPageLoaded();
+    }
+
+    @Test(dataProvider = "newLead")
+    public void createNewLeadTest(Lead testLead) {
         log.info("Test started");
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
@@ -43,23 +50,6 @@ public class LeadsTests extends BaseTest {
         leadsPage.clickNewButton();
         newLeadModal.waitForPageLoaded();
         log.debug("Moved to LeadDetailsPage");
-
-        Faker faker = new Faker();
-
-        Lead testLead = new Lead.LeadBuilder(faker.company().name(), LeadStatus.QUALIFIED)
-
-                .lastName(faker.name().lastName())
-                .title(TITLE)
-                .phone(faker.phoneNumber().phoneNumber())
-                .email(EMAIL)
-                .rating(Rating.WARM)
-                .annualRevenue(ANNUAL_REVENUE)
-                .webSite(WEB_SITE)
-                .numberOfEmployees(faker.number().digit())
-                .leadSource(LeadSource.EMPLOYEE)
-                .industry(Industry.EDUCATION)
-                .description(DESCRIPTION)
-                .build();
         log.info("Filling out the form");
         newLeadModal.fillForm(testLead);
         newLeadModal.clickSaveButton();
@@ -69,5 +59,67 @@ public class LeadsTests extends BaseTest {
         Assert.assertEquals(testLead, leadDetailsPage.getLeadInfo());
         log.info("Test finished");
     }
+
+    @DataProvider(name = "newLead")
+    public Object[][] newLeadTestData() {
+        Faker faker = new Faker();
+        return new Object[][]{
+
+                {
+                        Lead.builder().company(faker.company().name()).leadStatus(QUALIFIED)
+
+                                .lastName(faker.name().lastName())
+                                .title(TITLE)
+                                .phone(faker.phoneNumber().phoneNumber())
+                                .email(EMAIL)
+                                .rating(Rating.WARM)
+                                .annualRevenue(ANNUAL_REVENUE)
+                                .webSite(WEB_SITE)
+                                .numberOfEmployees(faker.number().digit())
+                                .leadSource(LeadSource.EMPLOYEE)
+                                .industry(Industry.EDUCATION)
+                                .description(DESCRIPTION)
+                                .build()
+                },
+
+                {
+                        Lead.builder().company(faker.company().name()).leadStatus(QUALIFIED)
+
+                                .lastName(faker.name().lastName())
+                                .title(TITLE)
+                                .phone(faker.phoneNumber().phoneNumber())
+                                .email(EMAIL)
+                                .rating(Rating.WARM)
+                                .annualRevenue(ANNUAL_REVENUE)
+                                .webSite(WEB_SITE)
+                                .numberOfEmployees(faker.number().digit())
+                                .leadSource(LeadSource.EMPLOYEE)
+                                .industry(Industry.EDUCATION)
+                                .description(DESCRIPTION)
+                                .build()
+                },
+
+
+                {
+                        Lead.builder().company(faker.company().name()).leadStatus(QUALIFIED)
+
+                                .lastName(faker.name().lastName())
+                                .title(TITLE)
+                                .phone(faker.phoneNumber().phoneNumber())
+                                .email(EMAIL)
+                                .rating(Rating.WARM)
+                                .annualRevenue(ANNUAL_REVENUE)
+                                .webSite(WEB_SITE)
+                                .numberOfEmployees(faker.number().digit())
+                                .leadSource(LeadSource.EMPLOYEE)
+                                .industry(Industry.EDUCATION)
+                                .description(DESCRIPTION)
+                                .build()
+
+
+                }
+        };
+    }
+
 
 }

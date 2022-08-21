@@ -1,7 +1,7 @@
 package pages;
 
 import elements.LightningFormatedElement;
-import models.Contact;
+import elements.models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -21,7 +21,7 @@ public class ContactDetailsPage extends BasePage {
     public Contact getLeadInfo() {
         String lastName = new LightningFormatedElement(driver, "Name").getText();
         String accountName = new LightningFormatedElement(driver, "Account Name").getText();
-        Contact.ContactBuilder contactBuilder = new Contact.ContactBuilder(lastName, accountName);
+        Contact.ContactBuilder contactBuilder = Contact.builder().lastName(lastName).accountName(accountName);
 
         String title = new LightningFormatedElement(driver, "Title").getText();
         if (title != "") {

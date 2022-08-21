@@ -3,8 +3,8 @@ package pages.modals;
 import elements.LightningCombobox;
 import elements.LightningInput;
 import elements.LightningTextarea;
+import elements.models.Lead;
 import lombok.extern.log4j.Log4j2;
-import models.Lead;
 import org.openqa.selenium.WebDriver;
 
 @Log4j2

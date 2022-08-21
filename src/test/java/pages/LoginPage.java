@@ -7,7 +7,6 @@ import static constants.Constants.WEBSITE;
 
 public class LoginPage extends BasePage {
 
- //   private final static String URL = "https://stroymol.my.salesforce.com/";
     private final static By usernameInput = By.cssSelector("input#username");
     private final static By passwordInput = By.cssSelector("input#password");
     private final static By loginButton = By.xpath("//input[@value='Log In']");

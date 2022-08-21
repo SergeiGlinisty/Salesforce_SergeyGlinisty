@@ -1,11 +1,11 @@
 package pages;
 
 import elements.LightningFormatedElement;
+import elements.models.Lead;
 import enums.Industry;
 import enums.LeadSource;
 import enums.LeadStatus;
 import enums.Rating;
-import models.Lead;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -28,7 +28,7 @@ public class LeadDetailsPage extends BasePage {
         String company = new LightningFormatedElement(driver, "Company").getText();
         String lastName = new LightningFormatedElement(driver, "Name").getText();
 
-        Lead.LeadBuilder leadBuilder = new Lead.LeadBuilder(company, LeadStatus.fromString(leadStatus));
+        Lead.LeadBuilder leadBuilder = Lead.builder().company(company).leadStatus(LeadStatus.fromString(leadStatus));
 
 
         String description = new LightningFormatedElement(driver, "Description").getText();

@@ -1,9 +1,9 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import elements.models.Account;
 import enums.Industry;
 import enums.Type;
-import models.Account;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -37,7 +37,7 @@ public class AccountsTest extends BaseTest {
 
         Faker faker = new Faker();
 
-        Account testAccount = new Account.AccountBuilder(ACCOUNTNAME)
+        Account testAccount = Account.builder().accountName(ACCOUNTNAME)
                 .industry(Industry.EDUCATION)
                 .phone(faker.phoneNumber().phoneNumber())
                 .fax(faker.phoneNumber().phoneNumber())

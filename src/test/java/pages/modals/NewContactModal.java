@@ -2,7 +2,7 @@ package pages.modals;
 
 import elements.ContactSearchInput;
 import elements.LightningInput;
-import models.Contact;
+import elements.models.Contact;
 import org.openqa.selenium.WebDriver;
 
 public class NewContactModal extends BaseModal {

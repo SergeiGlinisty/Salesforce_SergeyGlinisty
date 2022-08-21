@@ -1,9 +1,9 @@
 package pages;
 
 import elements.LightningFormatedElement;
+import elements.models.Account;
 import enums.Industry;
 import enums.Type;
-import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -23,7 +23,7 @@ public class AccountDetailsPage extends BasePage {
     public Account getLeadInfo() {
 
         String accountName = new LightningFormatedElement(driver, "Account Name").getText();
-        Account.AccountBuilder accountBuilder = new Account.AccountBuilder(accountName);
+        Account.AccountBuilder accountBuilder = Account.builder().accountName(accountName);
         String fax = new LightningFormatedElement(driver, "Fax").getText();
         if (fax != "") {
             accountBuilder.fax(fax);

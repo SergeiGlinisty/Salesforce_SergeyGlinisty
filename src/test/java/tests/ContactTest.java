@@ -1,7 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import models.Contact;
+import elements.models.Contact;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -38,7 +38,7 @@ public class ContactTest extends BaseTest {
 
         Faker faker = new Faker();
 
-        Contact testContact = new Contact.ContactBuilder(faker.name().lastName(), ACCOUNTNAME)
+        Contact testContact = Contact.builder().lastName(faker.name().lastName()).accountName(ACCOUNTNAME)
                 .title(TITLE)
                 .phone(faker.phoneNumber().phoneNumber())
                 .mobile(faker.phoneNumber().phoneNumber())

@@ -4,7 +4,7 @@ import elements.AccountDropDown;
 import elements.AccountInput;
 import elements.AccountSearchInput;
 import elements.AccountTextarea;
-import models.Account;
+import elements.models.Account;
 import org.openqa.selenium.WebDriver;
 
 public class NewAccountModal extends BaseModal {
