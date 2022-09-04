@@ -1,13 +1,14 @@
-package pages;
+package pages.leads;
 
 import elements.LightningFormatedElement;
-import elements.models.Lead;
+import models.Lead;
 import enums.Industry;
 import enums.LeadSource;
 import enums.LeadStatus;
 import enums.Rating;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class LeadDetailsPage extends BasePage {
 

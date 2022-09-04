@@ -1,4 +1,4 @@
-package elements.models;
+package models;
 
 import enums.Salutation;
 import lombok.Builder;

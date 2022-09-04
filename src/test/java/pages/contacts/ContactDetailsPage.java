@@ -1,9 +1,10 @@
-package pages;
+package pages.contacts;
 
 import elements.LightningFormatedElement;
-import elements.models.Contact;
+import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class ContactDetailsPage extends BasePage {
 

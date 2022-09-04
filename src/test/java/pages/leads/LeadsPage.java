@@ -1,7 +1,8 @@
-package pages;
+package pages.leads;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.EntityBasePage;
 
 public class LeadsPage extends EntityBasePage {
     public final static By ICON_LOCATOR = By.xpath("//span[text()='Leads']/parent::div");

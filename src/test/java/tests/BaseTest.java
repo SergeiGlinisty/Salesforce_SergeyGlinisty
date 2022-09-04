@@ -1,13 +1,28 @@
 package tests;
 
+
+import modals.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
-import pages.modals.NewAccountModal;
-import pages.modals.NewContactModal;
-import pages.modals.NewLeadModal;
+import pages.accounts.AccountDetailsPage;
+import pages.accounts.AccountsPage;
+import pages.cases.CasePage;
+import pages.cases.CasesDetailsPage;
+import pages.contacts.ContactDetailsPage;
+import pages.accounts.NewAccountPage;
+import pages.contacts.ContactsPage;
+import pages.leads.LeadDetailsPage;
+import pages.leads.LeadsPage;
+import pages.leads.NewLeadPage;
+import pages.opportunities.OpportunitiesDetailsPage;
+import pages.opportunities.OpportunitiesPage;
+import pages.reports.NewReportPage;
+import pages.reports.ReportsPage;
+import pages.tasks.TasksDetailsPage;
+import pages.tasks.TasksPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,6 +43,18 @@ public class BaseTest {
     protected ContactDetailsPage contactDetailsPage;
     protected ContactsPage contactsPage;
     protected NewContactModal newContactModal;
+    protected OpportunitiesPage opportunitiesPage;
+    protected OpportunitiesDetailsPage opportunitiesDetailsPage;
+    protected NewOpportunityModal newOpportunityModal;
+    protected CasePage casePage;
+    protected CasesDetailsPage casesDetailsPage;
+    protected NewCaseModal newCaseModal;
+    protected TasksPage tasksPage;
+    protected TasksDetailsPage tasksDetailsPage;
+    protected NewTaskModal newTaskModal;
+    protected ReportsPage reportsPage;
+    protected NewReportPage newReportPage;
+
 
     @BeforeClass(alwaysRun = true)
     public void setUp(ITestContext testContext) throws Exception {

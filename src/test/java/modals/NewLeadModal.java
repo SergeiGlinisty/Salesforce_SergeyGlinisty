@@ -1,9 +1,9 @@
-package pages.modals;
+package modals;
 
 import elements.LightningCombobox;
 import elements.LightningInput;
 import elements.LightningTextarea;
-import elements.models.Lead;
+import models.Lead;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 
