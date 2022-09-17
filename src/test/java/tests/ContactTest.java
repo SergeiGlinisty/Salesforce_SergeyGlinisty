@@ -1,13 +1,13 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import elements.models.Contact;
+import models.Contact;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.ContactDetailsPage;
-import pages.ContactsPage;
-import pages.modals.NewContactModal;
+import pages.contacts.ContactDetailsPage;
+import pages.contacts.ContactsPage;
+import modals.NewContactModal;
 
 import static constants.Constants.*;
 import static constants.Constants.NewLead.EMAIL;

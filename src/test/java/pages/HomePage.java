@@ -12,7 +12,13 @@ public class HomePage extends BasePage {
     public final static By ACCOUNTS_TAB_LOCATOR = By.xpath("//a[@title='Accounts']");
 
     public final static By CONTACTS_TAB_LOCATOR = By.xpath("//a[@title='Contacts']");
-    public final static By VIEW_PROFILE = By.xpath("//button[@class='slds-button branding-userProfile-button slds-button slds-global-actions__avatar slds-global-actions__item-action forceHeaderButton']");
+    public final static By OPPORTUNITY_TAB_LOCATOR = By.xpath("//a[@title='Opportunities']");
+    public final static By CASE_TAB_LOCATOR = By.xpath("//a[@title='Cases']");
+    public final static By TASK_TAB_LOCATOR = By.xpath("//a[@title='Tasks']");
+    public final static By REPORT_TAB_LOCATOR = By.xpath("//a[@title='Reports']");
+
+
+        public final static By VIEW_PROFILE = By.xpath("//button[@class='slds-button branding-userProfile-button slds-button slds-global-actions__avatar slds-global-actions__item-action forceHeaderButton']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -39,7 +45,18 @@ public class HomePage extends BasePage {
     public void openContactsTab() {
         jsClick(driver.findElement(CONTACTS_TAB_LOCATOR));
     }
-
+    public void openOpportunityTab() {
+        jsClick(driver.findElement(OPPORTUNITY_TAB_LOCATOR));
+    }
+    public void openCaseTab() {
+        jsClick(driver.findElement(CASE_TAB_LOCATOR));
+    }
+    public void openTaskTab() {
+        jsClick(driver.findElement(TASK_TAB_LOCATOR));
+    }
+    public void openReportTab() {
+        jsClick(driver.findElement(REPORT_TAB_LOCATOR));
+    }
     public void logout() {
         driver.findElement(VIEW_PROFILE).click();
         WebElement element = (new WebDriverWait(driver, 5))

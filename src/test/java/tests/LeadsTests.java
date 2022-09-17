@@ -1,7 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import elements.models.Lead;
+import models.Lead;
 import enums.Industry;
 import enums.LeadSource;
 import enums.Rating;
@@ -11,9 +11,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.LeadDetailsPage;
-import pages.LeadsPage;
-import pages.modals.NewLeadModal;
+import pages.leads.LeadDetailsPage;
+import pages.leads.LeadsPage;
+import modals.NewLeadModal;
 
 import static constants.Constants.NewLead.*;
 import static constants.Constants.PASSWORD;

@@ -1,7 +1,8 @@
-package pages;
+package pages.accounts;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class NewAccountPage extends BasePage {
 

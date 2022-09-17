@@ -1,15 +1,15 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import elements.models.Account;
+import models.Account;
 import enums.Industry;
 import enums.Type;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.AccountDetailsPage;
-import pages.AccountsPage;
-import pages.modals.NewAccountModal;
+import pages.accounts.AccountDetailsPage;
+import pages.accounts.AccountsPage;
+import modals.NewAccountModal;
 
 import static constants.Constants.*;
 import static constants.Constants.NewLead.*;

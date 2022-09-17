@@ -9,7 +9,8 @@ public class LoginPage extends BasePage {
 
     private final static By usernameInput = By.cssSelector("input#username");
     private final static By passwordInput = By.cssSelector("input#password");
-    private final static By loginButton = By.xpath("//input[@value='Log In']");
+    private final static By LOGIN_BUTTON = By.xpath("//input[@value='Log In']");
+    private final static By errorMessage = By.xpath("//div[@id='error']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -29,10 +30,17 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        driver.findElement(LOGIN_BUTTON).click();
     }
 
     public void open() {
         driver.get(WEBSITE);
     }
+    public String getErrorMassageText() {
+        return driver.findElement(errorMessage).getText();
+    }
+    public boolean isLoginButtonDisplayed() {
+        return driver.findElement(LOGIN_BUTTON).isDisplayed();
+    }
+
 }

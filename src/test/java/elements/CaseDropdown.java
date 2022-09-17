@@ -6,21 +6,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Objects;
-
 @Log4j2
-public class LightningCombobox extends BaseElement {
+public class CaseDropdown extends BaseElement{
+    private final static String BUTTON_LOCATOR = "//span[text()='%s']/parent::span/following-sibling::div//a";
+    private final static String COMBOBOX_LOCATOR = "//*[@role='menuitemradio' and text()='%s']";
 
-    private final static String BUTTON_LOCATOR = "//label[text()='%s']/following-sibling::div//button";
-    private final static String COMBOBOX_LOCATOR = "//*[@class='slds-truncate' and text()='%s']";
-
-    public LightningCombobox(WebDriver driver, String label) {
+    public CaseDropdown(WebDriver driver, String label) {
         super(driver, label);
     }
 
     public void selectByVisibleText(String visibleText) {
         log.debug("Go to the lightningCombobox field");
         WebElement button = driver.findElement(By.xpath(String.format(BUTTON_LOCATOR, label)));
-       if (Objects.nonNull(visibleText)) {
+        if (Objects.nonNull(visibleText)) {
             scrollIntoView(button);
             button.click();
         }
@@ -33,4 +31,5 @@ public class LightningCombobox extends BaseElement {
         }
 
     }
+
 }

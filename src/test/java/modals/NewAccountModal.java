@@ -1,10 +1,10 @@
-package pages.modals;
+package modals;
 
 import elements.AccountDropDown;
 import elements.AccountInput;
 import elements.AccountSearchInput;
 import elements.AccountTextarea;
-import elements.models.Account;
+import models.Account;
 import org.openqa.selenium.WebDriver;
 
 public class NewAccountModal extends BaseModal {

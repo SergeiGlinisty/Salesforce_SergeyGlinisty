@@ -1,11 +1,12 @@
-package pages;
+package pages.accounts;
 
 import elements.LightningFormatedElement;
-import elements.models.Account;
+import models.Account;
 import enums.Industry;
 import enums.Type;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class AccountDetailsPage extends BasePage {
 
