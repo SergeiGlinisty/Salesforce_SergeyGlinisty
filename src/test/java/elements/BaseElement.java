@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BaseElement {
+public abstract class BaseElement {
     protected WebDriver driver;
     protected String label;
     private WebDriverWait wait;

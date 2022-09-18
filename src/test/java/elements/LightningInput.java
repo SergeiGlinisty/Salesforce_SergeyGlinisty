@@ -21,7 +21,6 @@ public class LightningInput extends BaseElement {
         if (Objects.nonNull(value)) {
             log.info("Setting %s input value = %s", label, value);
             scrollIntoView(inputElement);
-            log.info("Setting %s input value = %s", label, value);
             inputElement.sendKeys(value);
         }
 

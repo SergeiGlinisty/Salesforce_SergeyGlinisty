@@ -1,18 +1,19 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import models.Account;
 import enums.Industry;
 import enums.Type;
+import modals.NewAccountModal;
+import models.Account;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.accounts.AccountDetailsPage;
 import pages.accounts.AccountsPage;
-import modals.NewAccountModal;
 
-import static constants.Constants.*;
+import static constants.Constants.ACCOUNTNAME;
 import static constants.Constants.NewLead.*;
+
 
 public class AccountsTest extends BaseTest {
     @BeforeClass
@@ -51,7 +52,7 @@ public class AccountsTest extends BaseTest {
         newAccountModal.fillForm(testAccount);
         newAccountModal.clickSaveButton();
         Assert.assertTrue(accountsPage.isPopupPresent());
-        Assert.assertEquals(testAccount, accountDetailsPage.getLeadInfo());
+        Assert.assertEquals(testAccount, accountDetailsPage.getAccountInfo());
 
     }
 }

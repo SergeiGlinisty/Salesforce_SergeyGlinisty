@@ -1,15 +1,15 @@
 package constants;
 
 public class Constants {
-    public static final String PASSWORD_NOT_ENTERED = "Please enter your password.";
 
-    public final static String USERNAME = "sergei.glinisty-a6uc@force.com";
-    public final static String PASSWORD = "mc2362871";
+    public static final String LOGIN_ERROR_TEXT_PASSWORD = "Please enter your password.";
+    public static final String LOGIN_ERROR_TEXT = "Please check your username and password. If you still can't log in, contact your Salesforce administrator.";
 
-    public final static String WEBSITE = "https://stroybaztorg.my.salesforce.com";
+    public final static String INCORRECT_PASSWORD = "mc236287";
     public final static String ACCOUNTNAME = "Sergei";
     public final static String DATA = "9/7/2022";
-    public final static String REPORT_ACCOUNT_NAME = "Account report";
+    public final static String REPORT_ACCOUNT_NAME = "Report_Salesforce_Accounts";
+    public final static String EXPECTED_REPORT_NAME = "Report_Salesforce_Accounts";
 
 
     public class NewLead {

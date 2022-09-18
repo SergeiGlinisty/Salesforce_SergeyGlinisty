@@ -3,8 +3,8 @@ package modals;
 import elements.LightningCombobox;
 import elements.LightningInput;
 import elements.LightningTextarea;
-import models.Lead;
 import lombok.extern.log4j.Log4j2;
+import models.Lead;
 import org.openqa.selenium.WebDriver;
 
 @Log4j2
@@ -15,7 +15,8 @@ public class NewLeadModal extends BaseModal {
     }
 
     public void fillForm(Lead inputLead) {
-        log.info("Creating new Lead: %s", inputLead);
+
+        log.debug("Filling new Lead form");
         new LightningInput(driver, "Last Name").setValue(inputLead.getLastName());
         new LightningCombobox(driver, "Lead Status").selectByVisibleText(inputLead.getLeadStatus().name);
         new LightningInput(driver, "Phone").setValue(inputLead.getPhone());

@@ -1,23 +1,15 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import modals.NewCaseModal;
 import modals.NewTaskModal;
-import models.Case;
 import models.Task;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.cases.CasePage;
-import pages.cases.CasesDetailsPage;
 import pages.tasks.TasksDetailsPage;
 import pages.tasks.TasksPage;
 
-import static constants.Constants.PASSWORD;
-import static constants.Constants.USERNAME;
-import static enums.CaseOrigin.TWITTER;
 import static enums.PriorityTask.NORMAL;
-import static enums.Status.OPEN;
 import static enums.StatusTask.COMPLETED;
 
 public class TaskTest  extends BaseTest{
@@ -32,7 +24,7 @@ public class TaskTest  extends BaseTest{
 
     }
 
-    @Test
+    @Test(description = "Create a new Task test", groups = {"Smoke"})
     public void createNewTask() {
 
         loginPage.setUserName(USERNAME);

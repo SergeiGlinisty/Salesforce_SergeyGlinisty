@@ -7,6 +7,8 @@
     <groupId>org.example</groupId>
     <artifactId>Salesforce_SergeyGlinisty</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+
     <build>
         <plugins>
             <plugin>
@@ -17,7 +19,10 @@
                     <systemProperties>
                         <browser>chrome</browser>
                     </systemProperties>
-
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>NegativeTest.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar -Xmx256m
                     </argLine>
@@ -27,7 +32,7 @@
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
-                        <scope>runtime</scope>
+
                     </dependency>
                 </dependencies>
             </plugin>
@@ -45,18 +50,21 @@
                 </configuration>
             </plugin>
 
-
         </plugins>
     </build>
 
     <properties>
-        <githubVersion>5.2.0</githubVersion>
-        <seleniumVersion>3.141.59</seleniumVersion>
-        <testNgVersion>7.4.0</testNgVersion>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
+        <suiteXmlFile>SmokeTest.xml</suiteXmlFile>
+        <githubVersion>5.2.0</githubVersion>
+        <seleniumVersion>3.141.59</seleniumVersion>
+        <testNgVersion>7.6.0</testNgVersion>
         <aspectj.version>1.9.8</aspectj.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -101,9 +109,13 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${githubVersion}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.18.1</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
-
 
 </project>

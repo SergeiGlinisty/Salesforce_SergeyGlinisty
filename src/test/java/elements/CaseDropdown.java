@@ -16,7 +16,7 @@ public class CaseDropdown extends BaseElement{
     }
 
     public void selectByVisibleText(String visibleText) {
-        log.debug("Go to the lightningCombobox field");
+        log.debug("Go to the CaseDropdown field");
         WebElement button = driver.findElement(By.xpath(String.format(BUTTON_LOCATOR, label)));
         if (Objects.nonNull(visibleText)) {
             scrollIntoView(button);

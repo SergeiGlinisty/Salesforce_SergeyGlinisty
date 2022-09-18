@@ -1,11 +1,12 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import models.Lead;
 import enums.Industry;
 import enums.LeadSource;
 import enums.Rating;
 import lombok.extern.log4j.Log4j2;
+import modals.NewLeadModal;
+import models.Lead;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -13,11 +14,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.leads.LeadDetailsPage;
 import pages.leads.LeadsPage;
-import modals.NewLeadModal;
 
 import static constants.Constants.NewLead.*;
-import static constants.Constants.PASSWORD;
-import static constants.Constants.USERNAME;
 import static enums.LeadStatus.QUALIFIED;
 
 @Log4j2

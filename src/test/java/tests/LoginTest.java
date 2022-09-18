@@ -1,51 +1,44 @@
 package tests;
 
-import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static constants.Constants.*;
-import static org.bouncycastle.cms.RecipientId.password;
 
-@Log4j2
+
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "Positive login test", groups = {"Smoke"})
     public void positiveLoginTest() {
-        log.info("Test Started");
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
-        log.info("Entered" + USERNAME + "and" + PASSWORD);
         loginPage.clickLoginButton();
         homePage.waitForPageLoaded();
         Assert.assertTrue(homePage.isUserIconDisplayed());
     }
 
-    @Test(description = "negative login test", groups = {"Regression", "Negative"}, dataProvider = "loginDataProvider")
+    @Test(description = "Negative login test", groups = {"Negative"}, dataProvider = "loginDataProvider")
     public void negativeLoginTest(String userName, String password, String expected) {
-        log.info("Test Started");
         loginPage.setUserName(userName);
         loginPage.setPassword(password);
         loginPage.clickLoginButton();
-        log.info("Clicked Login button");
         Assert.assertEquals(loginPage.getErrorMassageText(), expected);
     }
     @DataProvider(name = "loginDataProvider")
     public Object[][] negativeLoginTestData() {
         return new Object[][]{
 
-                {USERNAME, "", PASSWORD_NOT_ENTERED},
+                {USERNAME, "", LOGIN_ERROR_TEXT_PASSWORD},
+                {USERNAME, INCORRECT_PASSWORD, LOGIN_ERROR_TEXT},
 
         };
     }
 
-    @Test
+    @Test(description = "Log out test", groups = {"Negative"})
     public void LogOut() {
-        log.info("Test Started");
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
-        log.info("Entered" + USERNAME + "and" + PASSWORD);
         loginPage.clickLoginButton();
         homePage.waitForPageLoaded();
         Assert.assertTrue(homePage.isUserIconDisplayed());
