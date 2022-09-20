@@ -120,7 +120,7 @@ public class CaseTest extends BaseTest {
         Assert.assertTrue(casePage.isPopupPresentDelete());
     }
 
-    @Test
+    @Test (description = "negative Update test", groups = {"Negative"})
     public void negativeUpdateCase() {
 
         loginPage.setUserName(USERNAME);
