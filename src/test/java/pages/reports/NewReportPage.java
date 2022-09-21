@@ -9,11 +9,11 @@ import pages.BasePage;
 
 @Log4j2
 public class NewReportPage extends BasePage {
-    public final static By ALL_REPORT = By.xpath("//*[@class='report-type-section-list']//li/following-sibling::li/a[text()='All']");
-    public final static By CREATE_REPORT_TITLE = By.xpath("//div/*[@class='slds-modal__header']");
-    public final static By ACCOUNTS = By.xpath("//p[text()='Accounts']");
-    public final static By START_REPORT_BUTTON = By.xpath("//button[text()='Start Report']");
-    public final static By IFRAME = By.xpath("//iframe[@class='isEdit reportsReportBuilder']");
+    private final static By ALL_REPORT = By.xpath("//*[@class='report-type-section-list']//li/following-sibling::li/a[text()='All']");
+    private final static By CREATE_REPORT_TITLE = By.xpath("//div/*[@class='slds-modal__header']");
+    private final static By ACCOUNTS = By.xpath("//p[text()='Accounts']");
+    private final static By START_REPORT_BUTTON = By.xpath("//button[text()='Start Report']");
+    private final static By IFRAME = By.xpath("//iframe[@class='isEdit reportsReportBuilder']");
 
     public NewReportPage(WebDriver driver) {
         super(driver);

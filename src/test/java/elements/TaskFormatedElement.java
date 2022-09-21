@@ -15,7 +15,7 @@ public class TaskFormatedElement extends BaseElement {
     }
 
     public String getText() {
-        log.debug("Get text from TaskFormatedElement field");
+        log.debug("Get text from %s field", label);
         return driver.findElement(By.xpath(String.format(visibleTextLocator, label))).getText();
     }
 }

@@ -24,6 +24,7 @@ public class LoginPage extends BasePage {
     public void waitForPageLoaded() {
         log.debug("Wait USERNAME_INPUT element");
         waitForElementDisplayed(USERNAME_INPUT);
+        waitForElementClicable(USERNAME_INPUT);
     }
 
     @Step("Entering username")

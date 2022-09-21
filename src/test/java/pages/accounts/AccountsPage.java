@@ -8,9 +8,9 @@ import pages.EntityBasePage;
 
 @Log4j2
 public class AccountsPage extends EntityBasePage {
-    public final static By ACCOUNTS_PAGE_LOCATOR = By.xpath("//span[text()='Accounts']/parent::div");
+    private final static By ACCOUNTS_PAGE_LOCATOR = By.xpath("//span[text()='Accounts']/parent::div");
 
-    public final static By NEW_ACCOUNT = By.cssSelector("[data-refid=recordId]");
+    private final static By NEW_ACCOUNT = By.cssSelector("[data-refid=recordId]");
 
     public AccountsPage(WebDriver driver) {
         super(driver);

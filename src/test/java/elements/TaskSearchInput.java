@@ -15,11 +15,11 @@ public class TaskSearchInput extends BaseElement{
     }
 
     public void setValue(String value) {
-        log.debug("Go to the search input field");
+        log.debug("Go to %s input field",label);
         WebElement inputElement = driver.findElement(By.xpath(String.format(SEARCHINPUT_ACCOUNT_LOCATOR, label)));
 
         if (Objects.nonNull(value)) {
-            log.info("Setting %s input value = %s", label, value);
+            log.info("Set %s input value = %s", label, value);
             scrollIntoView(inputElement);
             inputElement.sendKeys(value);
         }

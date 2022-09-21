@@ -9,12 +9,12 @@ import org.openqa.selenium.WebDriver;
 public abstract class EntityBasePage extends BasePage {
     private final static By NEW_BUTTON = By.cssSelector("div.active a[title=New]");
     private final static By ENTITIES_LINKS_LOCATOR = By.cssSelector("a[data-refid=recordId]");
-    public final static By POPUP_LOCATOR_SAVE = By.xpath("//div/span[contains(text(),' was saved')]");
-    public final static By ENTITY_DROPDOWN_ICON = By.xpath("//*[@class='forceVirtualActionMarker forceVirtualAction']/a");
-    public final static By DELETE_BUTTON = By.xpath("//li/*[@title='Delete']");
-    public final static By CONFIRM_DELETE_BUTTON = By.xpath("//*[@class='slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton']");
-    public final static By CHECKBOX = By.xpath("//div[@class='slds-cell-fixed slds-align_absolute-center slds-th__action']/span");
-    public final static By POPUP_LOCATOR_NEGATIVE_UPDATE = By.xpath("//div/span[text()='Select at least one record.']");
+    private final static By POPUP_LOCATOR_SAVE = By.xpath("//div/span[contains(text(),' was saved')]");
+    private final static By ENTITY_DROPDOWN_ICON = By.xpath("//*[@class='forceVirtualActionMarker forceVirtualAction']/a");
+    private final static By DELETE_BUTTON = By.xpath("//li/*[@title='Delete']");
+    private final static By CONFIRM_DELETE_BUTTON = By.xpath("//*[@class='slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton']");
+    private final static By CHECKBOX = By.xpath("//div[@class='slds-cell-fixed slds-align_absolute-center slds-th__action']/span");
+    private final static By POPUP_LOCATOR_NEGATIVE_UPDATE = By.xpath("//div/span[text()='Select at least one record.']");
     private final static By POPUP_LOCATOR_CREATE = By.xpath("//*[text()=' was created.']");
     private final static By POPUP_LOCATOR = By.xpath("//div/span[@class='toastMessage slds-text-heading--small forceActionsText']");
     private final static By POPUP_LOCATOR_DELETE = By.xpath("//*[contains(text(),'was deleted.')]");
@@ -79,6 +79,11 @@ public abstract class EntityBasePage extends BasePage {
         log.debug("Click entity dropdown Icon");
         driver.findElement(ENTITY_DROPDOWN_ICON).click();
     }
+    @Step("Clicking entity dropdown icon ")
+    public void clickEntityDropdownIconJs() {
+        log.debug("Click entity dropdown Icon");
+        jsClick(driver.findElement(ENTITY_DROPDOWN_ICON));
+    }
 
     @Step("Clicking the delete entity button ")
     public void clickDeleteEntityButton() {
@@ -98,18 +103,33 @@ public abstract class EntityBasePage extends BasePage {
         driver.findElement(CONFIRM_DELETE_BUTTON).click();
 
     }
+    @Step("Waiting the confirm deleting entity button ")
+    public void waitConfirmDeleteEntityButton() {
+        log.debug("Waiting the confirm deleting entity button");
+        waitForElementDisplayed(CONFIRM_DELETE_BUTTON);
+        waitForElementClicable(CONFIRM_DELETE_BUTTON);
+    }
+
+
 
     @Step("Clicking entity dropdown icon ")
     public void waitForDeleteText() {
         log.debug("Wait POPUP_LOCATOR element");
         waitForElementDisplayed(POPUP_LOCATOR);
+        waitForElementClicable(POPUP_LOCATOR);
     }
 
     @Step("Waiting to load checkbox")
     public void waitForCheckboxeLoaded() {
         log.debug("Wait to load checkbox");
+        waitForElementDisplayed(CHECKBOX);
         waitForElementClicable(CHECKBOX);
     }
-
+    @Step("Waiting entity dropdown icon")
+    public void waitForEntityDropdownIcon() {
+        log.debug("Waiting ENTITY_DROPDOWN_ICON element");
+        waitForElementDisplayed(ENTITY_DROPDOWN_ICON);
+        waitForElementClicable(ENTITY_DROPDOWN_ICON);
+    }
 
 }

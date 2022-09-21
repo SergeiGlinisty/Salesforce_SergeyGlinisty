@@ -15,7 +15,8 @@ public class LightningFormatedElement extends BaseElement {
     }
 
     public String getText() {
-        log.debug("Get text from LightningFormatedElement field");
+        log.debug("Get text from %s field", label);
         return driver.findElement(By.xpath(String.format(visibleTextLocator, label))).getText();
+
     }
 }

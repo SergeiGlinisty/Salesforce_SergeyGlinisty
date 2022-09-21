@@ -14,12 +14,12 @@ public class TaskTextarea extends BaseElement{
     }
 
     public void setValue(String value) {
-        log.debug("Go to the textarea input field");
+        log.debug("Go to %s textarea field", label);
         WebElement inputElement = driver.findElement(By.xpath(String.format(TEXTAREA_ACCOUNT_LOCATOR, label)));
 
 
         if (Objects.nonNull(value)) {
-            log.info("Setting %s input value = %s", label, value);
+            log.info("Set %s input value = %s", label, value);
             scrollIntoView(inputElement);
             inputElement.sendKeys(value);
         }

@@ -14,16 +14,6 @@ import static enums.StatusTask.COMPLETED;
 
 public class TaskTest  extends BaseTest{
 
-    @BeforeClass
-    public void initialise() {
-
-        tasksPage = new TasksPage(driver);
-        tasksDetailsPage = new TasksDetailsPage(driver);
-        newTaskModal = new NewTaskModal(driver);
-
-
-    }
-
     @Test(description = "Create a new Task test", groups = {"Smoke"})
     public void createNewTask() {
 

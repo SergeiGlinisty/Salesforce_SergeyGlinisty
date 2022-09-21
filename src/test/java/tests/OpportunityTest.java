@@ -25,19 +25,6 @@ import static enums.Stage.QUALIFICATION;
 
 public class OpportunityTest extends BaseTest {
 
-    @BeforeClass
-    public void initialise() {
-
-        opportunitiesPage = new OpportunitiesPage(driver);
-        opportunitiesDetailsPage = new OpportunitiesDetailsPage(driver);
-        newOpportunityModal = new NewOpportunityModal(driver);
-        accountsPage = new AccountsPage(driver);
-        accountDetailsPage = new AccountDetailsPage(driver);
-        newAccountModal = new NewAccountModal(driver);
-
-
-    }
-
     @BeforeMethod(onlyForGroups = {"CreatingNewOpportunity", "DeletingOpportunity"})
     public void createNewAccount() {
         loginPage.setUserName(USERNAME);
@@ -64,7 +51,7 @@ public class OpportunityTest extends BaseTest {
 
         newAccountModal.fillForm(testAccount);
         newAccountModal.clickSaveButton();
-        homePage.logout();
+        homePage.logoutJs();
 
     }
 
@@ -72,16 +59,12 @@ public class OpportunityTest extends BaseTest {
     public void delete() {
 
         homePage.openOpportunityTab();
-        opportunitiesPage.waitForPageLoaded();
+        opportunitiesPage.waitForEntityDropdownIcon();
         opportunitiesPage.clickEntityDropdownIcon();
         opportunitiesPage.clickDeleteEntityButton();
+        opportunitiesPage.waitConfirmDeleteEntityButton();
         opportunitiesPage.clickToConfirmToDeleteEntity();
-        homePage.openOpportunityTab();
-        opportunitiesPage.waitForPageLoaded();
-        opportunitiesPage.clickEntityDropdownIcon();
-        opportunitiesPage.clickDeleteEntityButton();
-        opportunitiesPage.clickToConfirmToDeleteEntity();
-
+        homePage.logout();
     }
 
     @Test(description = "Creating a new Opportunity test", groups = {"Smoke", "CreatingNewOpportunity"})
@@ -116,6 +99,7 @@ public class OpportunityTest extends BaseTest {
     @Test(description = "Deleting Opportunity test", groups = {"Smoke", "DeletingOpportunity"})
     public void deleteOpportunity() {
 
+        loginPage.waitForPageLoaded();
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
@@ -138,6 +122,7 @@ public class OpportunityTest extends BaseTest {
         newOpportunityModal.clickSaveButton();
         homePage.openOpportunityTab();
         homePage.openOpportunityTab();
+        homePage.openOpportunityTabJs();
         opportunitiesPage.waitForEntityDropdownIcon();
         opportunitiesPage.clickEntityDropdownIcon();
         opportunitiesPage.clickDeleteEntityButton();

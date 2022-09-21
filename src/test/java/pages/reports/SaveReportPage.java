@@ -11,12 +11,12 @@ import pages.BasePage;
 
 @Log4j2
 public class SaveReportPage extends BasePage {
-    public final static By IFRAME = By.xpath("//iframe[@class='isEdit reportsReportBuilder']");
+    private final static By IFRAME = By.xpath("//iframe[@class='isEdit reportsReportBuilder']");
 
-    public final static By SAVE_REPORT_TITLE = By.xpath("//h2[text()='Save Report']");
-    public final static By NEW_REPORT_NAME = By.cssSelector("input[id='reportName']");
+    private final static By SAVE_REPORT_TITLE = By.xpath("//h2[text()='Save Report']");
+    private final static By NEW_REPORT_NAME = By.cssSelector("input[id='reportName']");
 
-    public final static By SAVE_REPORT_BUTTON = By.xpath("//*[@class='slds-button slds-button_brand report-save']");
+    private final static By SAVE_REPORT_BUTTON = By.xpath("//*[@class='slds-button slds-button_brand report-save']");
 
     public SaveReportPage(WebDriver driver) {
         super(driver);

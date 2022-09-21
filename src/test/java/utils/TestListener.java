@@ -8,21 +8,21 @@ import org.testng.ITestResult;
 
 @Log4j2
 public class TestListener implements ITestListener {
-    @Step("Starting test")
+
     @Override
     public void onTestStart(ITestResult result) {
         ITestListener.super.onTestStart(result);
         log.debug("Test " + result.getName() + " started");
     }
 
-    @Step("Success test")
+
     @Override
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
         log.info("Test " + result.getName() + " finished");
     }
 
-    @Step("Failure test")
+
     @Override
     public void onTestFailure(ITestResult result) {
         ITestListener.super.onTestFailure(result);

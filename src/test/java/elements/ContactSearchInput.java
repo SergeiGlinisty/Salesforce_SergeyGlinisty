@@ -17,14 +17,14 @@ public class ContactSearchInput extends BaseElement {
     }
 
     public void setValue(String value) {
-        log.debug("Go to the ContactSearchInput field");
+
         Actions action = new Actions(driver);
         action.moveToElement(DROPDOWN_LOCATOR).click().build().perform();
-
         WebElement element = (new WebDriverWait(driver, 5))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul[@role='group']")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format("//ul[@role='group']",label))));
+        log.debug("Set %s value to %s input", value, label);
         element.click();
-        log.info("The user Account Name has been set");
+
     }
 
 

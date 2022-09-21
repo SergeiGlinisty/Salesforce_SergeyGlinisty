@@ -37,25 +37,23 @@ public class LeadsTests extends BaseTest {
 
     @Test(dataProvider = "newLead")
     public void createNewLeadTest(Lead testLead) {
-        log.info("Test started");
+
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
         homePage.waitForPageLoaded();
-        log.debug("Waited HomePage");
+
         homePage.openLeadsTab();
         leadsPage.waitForPageLoaded();
         leadsPage.clickNewButton();
         newLeadModal.waitForPageLoaded();
-        log.debug("Moved to LeadDetailsPage");
-        log.info("Filling out the form");
+
         newLeadModal.fillForm(testLead);
         newLeadModal.clickSaveButton();
         Assert.assertTrue(leadsPage.isPopupPresent());
-        log.debug("Created Lead");
-        log.info("comparing objects");
+
         Assert.assertEquals(testLead, leadDetailsPage.getLeadInfo());
-        log.info("Test finished");
+
     }
 
     @DataProvider(name = "newLead")

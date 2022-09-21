@@ -16,14 +16,6 @@ import static constants.Constants.NewLead.*;
 
 
 public class AccountsTest extends BaseTest {
-    @BeforeClass
-    public void initialise() {
-
-        accountsPage = new AccountsPage(driver);
-        accountDetailsPage = new AccountDetailsPage(driver);
-        newAccountModal = new NewAccountModal(driver);
-
-    }
 
     @Test
     public void createNewAccount() {

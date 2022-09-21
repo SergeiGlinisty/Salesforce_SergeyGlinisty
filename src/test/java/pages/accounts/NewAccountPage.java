@@ -10,7 +10,7 @@ import pages.BasePage;
 public class NewAccountPage extends BasePage {
 
 
-    public final static By ICON_LOCATOR_NEW_ACCOUNT = By.xpath("//h2[text()='New Account']");
+    private final static By ICON_LOCATOR_NEW_ACCOUNT = By.xpath("//h2[text()='New Account']");
 
 
     public NewAccountPage(WebDriver driver) {

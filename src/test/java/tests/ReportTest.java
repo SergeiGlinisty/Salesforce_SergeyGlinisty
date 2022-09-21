@@ -9,14 +9,6 @@ import pages.reports.ReportsPage;
 import pages.reports.SaveReportPage;
 public class ReportTest extends BaseTest{
 
-    @BeforeClass
-    public void initialise() {
-        reportsPage = new ReportsPage(driver);
-        newReportPage = new NewReportPage(driver);
-        newAccountReportPage = new NewAccountReportPage(driver);
-        saveReportPage = new SaveReportPage(driver);
-    }
-
     @Test(description = "Creating a new Report test", groups = {"Smoke"})
     public void createNewReport() {
         loginPage.setUserName(USERNAME);

@@ -16,12 +16,12 @@ public class AccountInput extends BaseElement {
     }
 
     public void setValue(String value) {
-        log.debug("Go to the input field");
+        log.debug("Go to %s input field",label);
         WebElement inputElement = driver.findElement(By.xpath(String.format(INPUT_ACCOUNT_LOCATOR, label)));
 
         if (Objects.nonNull(value)) {
             scrollIntoView(inputElement);
-            log.info("Setting %s input value = %s", label, value);
+            log.info("Set %s input value = %s", label, value);
             inputElement.sendKeys(value);
         }
 

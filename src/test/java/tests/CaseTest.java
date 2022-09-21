@@ -25,37 +25,25 @@ import static enums.Status.OPEN;
 
 public class CaseTest extends BaseTest {
 
-    @BeforeClass
-    public void initialise() {
-        opportunitiesPage = new OpportunitiesPage(driver);
-        opportunitiesDetailsPage = new OpportunitiesDetailsPage(driver);
-        newOpportunityModal = new NewOpportunityModal(driver);
-        accountsPage = new AccountsPage(driver);
-        accountDetailsPage = new AccountDetailsPage(driver);
-        newAccountModal = new NewAccountModal(driver);
-        casePage = new CasePage(driver);
-        casesDetailsPage = new CasesDetailsPage(driver);
-        newCaseModal = new NewCaseModal(driver);
-
-    }
-
     @AfterMethod(onlyForGroups = {"CreatingNewCase", "UpdatingCase"})
     public void delete() {
 
         homePage.openCaseTab();
         casePage.waitForPageLoaded();
+        casePage.waitForEntityDropdownIcon();
         casePage.clickEntityDropdownIcon();
         casePage.clickDeleteEntityButton();
+        casePage.waitConfirmDeleteEntityButton();
         casePage.clickToConfirmToDeleteEntity();
-        homePage.openCaseTab();
-        casePage.waitForPageLoaded();
-        casePage.clickEntityDropdownIcon();
-        casePage.clickDeleteEntityButton();
-        casePage.clickToConfirmToDeleteEntity();
+        casePage.waitForDeleteText();
+    }
+    @AfterMethod(onlyForGroups = {"CreatingNewCase", "UpdatingCase","NegativeUpdateCase","DeleteCase"})
+    public void logout() {
+        homePage.logout();
     }
 
 
-    @Test(description = "Create a new Case test", groups = {"Smoke", "CreatingNewCase"})
+    @Test(description = "Creating a new Case test", groups = {"Smoke", "CreatingNewCase"})
     public void createNewCase() {
 
         loginPage.setUserName(USERNAME);
@@ -94,6 +82,7 @@ public class CaseTest extends BaseTest {
     @Test(description = "Checking the update Case test", groups = {"Smoke", "UpdatingCase"})
     public void positiveUpdateCase() {
 
+        loginPage.waitForPageLoaded();
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
@@ -115,7 +104,6 @@ public class CaseTest extends BaseTest {
 
         newCaseModal.fillForm(testCase);
         newCaseModal.clickSaveButton();
-        homePage.openCaseTab();
         homePage.openCaseTab();
         casePage.waitForPageLoaded();
         casePage.waitForCheckboxeLoaded();
@@ -141,9 +129,12 @@ public class CaseTest extends BaseTest {
         Assert.assertEquals(expectedUpdatingCase, casesDetailsPage.getCaseInfo());
     }
 
-    @Test(description = "Checking the delete Case test", groups = {"Smoke"})
+
+
+    @Test(description = "Checking the delete Case test", groups = {"Smoke","DeleteCase"})
     public void deleteCase() {
 
+        loginPage.waitForPageLoaded();
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
@@ -166,16 +157,18 @@ public class CaseTest extends BaseTest {
         newCaseModal.fillForm(testCase);
         newCaseModal.clickSaveButton();
         homePage.openCaseTab();
-        casePage.waitForPageLoaded();
-        casePage.clickEntityDropdownIcon();
+        casePage.waitForEntityDropdownIcon();
+        casePage.clickEntityDropdownIconJs();
         casePage.clickDeleteEntityButton();
+        casePage.waitConfirmDeleteEntityButton();
         casePage.clickToConfirmToDeleteEntity();
         casePage.waitForDeleteText();
         Assert.assertTrue(casePage.isPopupPresentDelete());
         Assert.assertTrue(casePage.isEmptyText());
     }
 
-    @Test(description = "negative Update test", groups = {"Negative"})
+
+    @Test(description = "negative Update test", groups = {"Negative","NegativeUpdateCase"})
     public void negativeUpdateCase() {
 
         loginPage.setUserName(USERNAME);
@@ -187,5 +180,7 @@ public class CaseTest extends BaseTest {
         casePage.clickUpdateCaseButton();
         Assert.assertTrue(casePage.isPopupPresentNegativeUpdate());
     }
+
+
 
 }

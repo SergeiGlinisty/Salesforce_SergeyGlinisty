@@ -18,17 +18,18 @@ public class LightningCombobox extends BaseElement {
     }
 
     public void selectByVisibleText(String visibleText) {
-        log.debug("Go to the lightningCombobox field");
+
         WebElement button = driver.findElement(By.xpath(String.format(BUTTON_LOCATOR, label)));
        if (Objects.nonNull(visibleText)) {
             scrollIntoView(button);
+           log.debug("Go to %s dropdown", label);
             button.click();
         }
-        log.debug("Select the desired option");
+
         WebElement option = driver.findElement(By.xpath(String.format(COMBOBOX_LOCATOR, visibleText)));
         if (Objects.nonNull(visibleText)) {
             scrollIntoView(option);
-            log.info("Setting %s input value = %s", label, visibleText);
+            log.info("Select %s input value = %s", label, visibleText);
             option.click();
         }
 

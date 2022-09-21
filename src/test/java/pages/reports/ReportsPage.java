@@ -8,8 +8,8 @@ import pages.EntityBasePage;
 
 @Log4j2
 public class ReportsPage extends EntityBasePage {
-    public final static By REPORTS_PAGE_LOCATOR = By.xpath("//span[text()='Reports']/parent::li");
-    public final static By NEW_REPORT_LOCATOR = By.xpath("//a[@title='New Report']");
+    private final static By REPORTS_PAGE_LOCATOR = By.xpath("//span[text()='Reports']/parent::li");
+    private final static By NEW_REPORT_LOCATOR = By.xpath("//a[@title='New Report']");
     public ReportsPage(WebDriver driver) {
         super(driver);
     }
