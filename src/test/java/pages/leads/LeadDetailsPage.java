@@ -1,11 +1,11 @@
 package pages.leads;
 
-import elements.LightningFormatedElement;
-import models.Lead;
 import enums.Industry;
 import enums.LeadSource;
 import enums.LeadStatus;
 import enums.Rating;
+import enums.elements.LightningFormatedElement;
+import models.Lead;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;

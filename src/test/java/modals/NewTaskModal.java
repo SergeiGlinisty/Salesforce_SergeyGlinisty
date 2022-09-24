@@ -1,8 +1,8 @@
 package modals;
 
-import elements.CaseDropdown;
-import elements.TaskSearchInput;
-import elements.TaskTextarea;
+import enums.elements.CaseDropdown;
+import enums.elements.TaskSearchInput;
+import enums.elements.TaskTextarea;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Task;

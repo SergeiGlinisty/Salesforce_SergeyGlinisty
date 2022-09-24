@@ -1,8 +1,8 @@
 package pages.cases;
 
-import elements.CaseFormatedElement;
 import enums.Priority;
 import enums.Status;
+import enums.elements.CaseFormatedElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Case;

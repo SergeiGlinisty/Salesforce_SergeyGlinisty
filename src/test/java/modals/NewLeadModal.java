@@ -1,8 +1,8 @@
 package modals;
 
-import elements.LightningCombobox;
-import elements.LightningInput;
-import elements.LightningTextarea;
+import enums.elements.LightningCombobox;
+import enums.elements.LightningInput;
+import enums.elements.LightningTextarea;
 import lombok.extern.log4j.Log4j2;
 import models.Lead;
 import org.openqa.selenium.WebDriver;

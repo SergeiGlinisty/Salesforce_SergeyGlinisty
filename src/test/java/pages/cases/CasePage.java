@@ -13,6 +13,7 @@ public class CasePage extends EntityBasePage {
     private final static By UPDATE_CASE_BUTTON = By.xpath("//div[@title='Update Case']/parent::a");
     private final static By CASE = By.xpath("//div/a[text()='New project']");
     private final static By SAVE_BUTTON = By.xpath("//*[@class='slds-button slds-button_brand cuf-publisherShareButton undefined uiButton']");
+
     public CasePage(WebDriver driver) {
         super(driver);
     }
@@ -30,6 +31,12 @@ public class CasePage extends EntityBasePage {
         driver.findElement(UPDATE_CASE_BUTTON).click();
     }
 
+    @Step("Clicking the update case button")
+    public void clickUpdateCaseButtonJs() {
+        log.debug("Clicking update button");
+        jsClick(driver.findElement(UPDATE_CASE_BUTTON));
+    }
+
     @Step("Clicking the save case button")
     public void clickSaveButtonToUpdate() {
         log.debug("Clicking save button");
@@ -39,7 +46,14 @@ public class CasePage extends EntityBasePage {
     @Step("Clicking the case tab")
     public void clickCase() {
         log.debug("Clicking Case tab");
-        jsClick(driver.findElement(CASE));
+        driver.findElement(CASE).click();
+    }
+
+    @Step("Waiting the case tab")
+    public void waitClickCase() {
+        log.debug("Waiting Case tab");
+        waitForElementDisplayed(CASE);
+        waitForElementClicable(CASE);
     }
 
 }

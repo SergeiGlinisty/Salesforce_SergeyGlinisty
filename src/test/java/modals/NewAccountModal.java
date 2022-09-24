@@ -1,9 +1,9 @@
 package modals;
 
-import elements.AccountDropDown;
-import elements.AccountInput;
-import elements.AccountSearchInput;
-import elements.AccountTextarea;
+import enums.elements.AccountDropDown;
+import enums.elements.AccountInput;
+import enums.elements.AccountSearchInput;
+import enums.elements.AccountTextarea;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Account;

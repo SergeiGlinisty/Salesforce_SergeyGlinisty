@@ -1,8 +1,8 @@
 package pages.opportunities;
 
-import elements.LightningFormatedElement;
-import elements.OpportunityFormatedElement;
 import enums.Stage;
+import enums.elements.LightningFormatedElement;
+import enums.elements.OpportunityFormatedElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Opportunity;

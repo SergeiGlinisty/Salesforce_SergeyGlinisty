@@ -1,8 +1,8 @@
 package modals;
 
-import elements.LightningInput;
-import elements.OpportunityCombobox;
-import elements.OpportunitySearchInput;
+import enums.elements.LightningInput;
+import enums.elements.OpportunityCombobox;
+import enums.elements.OpportunitySearchInput;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Opportunity;

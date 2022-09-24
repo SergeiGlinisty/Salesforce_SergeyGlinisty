@@ -13,7 +13,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 60);
+        wait = new WebDriverWait(driver, 30);
     }
 
     public abstract void waitForPageLoaded();

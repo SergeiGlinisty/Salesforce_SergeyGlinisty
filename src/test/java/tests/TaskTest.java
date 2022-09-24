@@ -1,13 +1,9 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import modals.NewTaskModal;
 import models.Task;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.tasks.TasksDetailsPage;
-import pages.tasks.TasksPage;
 
 import static enums.PriorityTask.NORMAL;
 import static enums.StatusTask.COMPLETED;

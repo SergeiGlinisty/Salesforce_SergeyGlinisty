@@ -1,8 +1,8 @@
 package pages.tasks;
 
-import elements.TaskFormatedElement;
 import enums.PriorityTask;
 import enums.StatusTask;
+import enums.elements.TaskFormatedElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Task;

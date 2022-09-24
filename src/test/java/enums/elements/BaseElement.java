@@ -1,4 +1,4 @@
-package elements;
+package enums.elements;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

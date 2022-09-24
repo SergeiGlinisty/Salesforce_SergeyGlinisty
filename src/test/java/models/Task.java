@@ -1,6 +1,7 @@
 package models;
 
-import enums.*;
+import enums.PriorityTask;
+import enums.StatusTask;
 import lombok.Builder;
 import lombok.Data;
 

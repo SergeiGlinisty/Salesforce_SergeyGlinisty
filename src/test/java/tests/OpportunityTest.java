@@ -3,19 +3,12 @@ package tests;
 import com.github.javafaker.Faker;
 import enums.Industry;
 import enums.Type;
-import modals.NewAccountModal;
-import modals.NewOpportunityModal;
 import models.Account;
 import models.Opportunity;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.accounts.AccountDetailsPage;
-import pages.accounts.AccountsPage;
-import pages.opportunities.OpportunitiesDetailsPage;
-import pages.opportunities.OpportunitiesPage;
 
 import static constants.Constants.ACCOUNTNAME;
 import static constants.Constants.DATA;
@@ -25,8 +18,8 @@ import static enums.Stage.QUALIFICATION;
 
 public class OpportunityTest extends BaseTest {
 
-    @BeforeMethod(onlyForGroups = {"CreatingNewOpportunity", "DeletingOpportunity"})
-    public void createNewAccount() {
+    @BeforeMethod(onlyForGroups = {"CreatingNewOpportunity"})
+    public void createNewAccount() throws InterruptedException {
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
@@ -51,32 +44,32 @@ public class OpportunityTest extends BaseTest {
 
         newAccountModal.fillForm(testAccount);
         newAccountModal.clickSaveButton();
-        homePage.logoutJs();
+        Thread.sleep(5000);
 
     }
 
-    @AfterMethod(onlyForGroups = {"CreatingNewOpportunity"})
-    public void delete() {
 
-        homePage.openOpportunityTab();
+    @AfterMethod(onlyForGroups = {"CreatingNewOpportunity"})
+    public void deleteOpportunity() throws InterruptedException {
+
+        homePage.waitForOpportunityTab();
+        homePage.openOpportunityTabJs();
         opportunitiesPage.waitForEntityDropdownIcon();
-        opportunitiesPage.clickEntityDropdownIcon();
-        opportunitiesPage.clickDeleteEntityButton();
+        Thread.sleep(5000);
+        opportunitiesPage.clickEntityDropdownIconJs();
+        opportunitiesPage.clickDeleteEntityButtonJs();
         opportunitiesPage.waitConfirmDeleteEntityButton();
-        opportunitiesPage.clickToConfirmToDeleteEntity();
-        homePage.logout();
+        opportunitiesPage.clickToConfirmToDeleteEntityJs();
+        opportunitiesPage.waitForDeleteText();
     }
 
     @Test(description = "Creating a new Opportunity test", groups = {"Smoke", "CreatingNewOpportunity"})
-    public void createNewOpportunity() {
+    public void createNewOpportunityTest() {
 
-        loginPage.setUserName(USERNAME);
-        loginPage.setPassword(PASSWORD);
-        loginPage.clickLoginButton();
         homePage.waitForPageLoaded();
-        homePage.openOpportunityTab();
+        homePage.openOpportunityTabJs();
         opportunitiesPage.waitForPageLoaded();
-        opportunitiesPage.clickNewButton();
+        opportunitiesPage.clickNewButtonOpportunity();
         newOpportunityModal.waitForPageLoaded();
 
         Faker faker = new Faker();
@@ -90,23 +83,20 @@ public class OpportunityTest extends BaseTest {
 
         newOpportunityModal.fillForm(testOpportunity);
         newOpportunityModal.clickSaveButton();
+        opportunitiesPage.waitPopupPresent();
         Assert.assertTrue(opportunitiesPage.isPopupPresent());
         Assert.assertEquals(testOpportunity, opportunitiesDetailsPage.getOpportunityInfo());
 
     }
 
 
-    @Test(description = "Deleting Opportunity test", groups = {"Smoke", "DeletingOpportunity"})
-    public void deleteOpportunity() {
+    @Test(description = "Deleting Opportunity test", groups = {"Smoke"})
+    public void deleteOpportunityTest() throws InterruptedException {
 
-        loginPage.waitForPageLoaded();
-        loginPage.setUserName(USERNAME);
-        loginPage.setPassword(PASSWORD);
-        loginPage.clickLoginButton();
         homePage.waitForPageLoaded();
-        homePage.openOpportunityTab();
+        homePage.openOpportunityTabJs();
         opportunitiesPage.waitForPageLoaded();
-        opportunitiesPage.clickNewButton();
+        opportunitiesPage.clickNewButtonOpportunity();
         newOpportunityModal.waitForPageLoaded();
 
         Faker faker = new Faker();
@@ -120,13 +110,12 @@ public class OpportunityTest extends BaseTest {
 
         newOpportunityModal.fillForm(testOpportunity);
         newOpportunityModal.clickSaveButton();
-        homePage.openOpportunityTab();
-        homePage.openOpportunityTab();
+        homePage.openOpportunityTabJs();
         homePage.openOpportunityTabJs();
         opportunitiesPage.waitForEntityDropdownIcon();
-        opportunitiesPage.clickEntityDropdownIcon();
-        opportunitiesPage.clickDeleteEntityButton();
-        opportunitiesPage.clickToConfirmToDeleteEntity();
+        opportunitiesPage.clickEntityDropdownIconJs();
+        opportunitiesPage.clickDeleteEntityButtonJs();
+        opportunitiesPage.clickToConfirmToDeleteEntityJs();
         opportunitiesPage.waitForDeleteText();
         Assert.assertTrue(opportunitiesPage.isPopupPresentDelete());
         Assert.assertTrue(opportunitiesPage.isEmptyText());

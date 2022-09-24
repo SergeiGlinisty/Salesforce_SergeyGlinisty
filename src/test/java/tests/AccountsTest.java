@@ -3,13 +3,9 @@ package tests;
 import com.github.javafaker.Faker;
 import enums.Industry;
 import enums.Type;
-import modals.NewAccountModal;
 import models.Account;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.accounts.AccountDetailsPage;
-import pages.accounts.AccountsPage;
 
 import static constants.Constants.ACCOUNTNAME;
 import static constants.Constants.NewLead.*;

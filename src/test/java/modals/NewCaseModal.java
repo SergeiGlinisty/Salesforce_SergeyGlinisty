@@ -1,8 +1,8 @@
 package modals;
 
-import elements.AccountInput;
-import elements.AccountTextarea;
-import elements.CaseDropdown;
+import enums.elements.AccountInput;
+import enums.elements.AccountTextarea;
+import enums.elements.CaseDropdown;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Case;

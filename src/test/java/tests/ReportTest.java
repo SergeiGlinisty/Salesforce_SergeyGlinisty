@@ -1,12 +1,7 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.reports.NewAccountReportPage;
-import pages.reports.NewReportPage;
-import pages.reports.ReportsPage;
-import pages.reports.SaveReportPage;
 public class ReportTest extends BaseTest{
 
     @Test(description = "Creating a new Report test", groups = {"Smoke"})
@@ -23,6 +18,7 @@ public class ReportTest extends BaseTest{
         newAccountReportPage.clickSaveAndRunButton();
         saveReportPage.waitForPageLoaded();
         saveReportPage.saveNewReport();
+        reportsPage.waitPopupPresentSaved();
         Assert.assertTrue(reportsPage.isPopupPresentSaved());
         Assert.assertEquals(expectedReportName, actualReportName);
 

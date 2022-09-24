@@ -1,4 +1,4 @@
-package elements;
+package enums.elements;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;

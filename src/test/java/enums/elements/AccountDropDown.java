@@ -1,4 +1,4 @@
-package elements;
+package enums.elements;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -23,13 +23,11 @@ public class AccountDropDown extends BaseElement {
             log.debug("Go to %s dropdown", label);
             button.click();
         }
-        log.debug("Select the desired option");
+
         WebElement option = driver.findElement(By.xpath(String.format(DROPDOWN_LOCATOR, visibleText)));
-        if (Objects.nonNull(visibleText)) {
-            scrollIntoView(option);
             log.info("Select %s input value = %s", label, visibleText);
             option.click();
-        }
+
 
     }
 

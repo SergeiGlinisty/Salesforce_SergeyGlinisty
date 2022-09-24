@@ -1,8 +1,8 @@
 package pages.accounts;
 
-import elements.LightningFormatedElement;
 import enums.Industry;
 import enums.Type;
+import enums.elements.LightningFormatedElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import models.Account;
