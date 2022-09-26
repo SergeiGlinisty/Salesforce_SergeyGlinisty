@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke Tests" >
+    <test name="Smoke test">
+        <parameter name="browser" value="Chrome" />
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests"/>
+        </packages>
+        <classes>
+            <class name="tests.CaseTest">
+                <methods>
+                    <include name="deleteCase" />
+                    <include name="createNewCaseTest" />
+                    <include name="positiveUpdateCaseTest" />
+                    <include name="deleteCaseTest" />
+                </methods>
+            </class>
+            <class name="tests.OpportunityTest">
+                <methods>
+                    <include name="createNewAccount" />
+                    <include name="deleteOpportunity" />
+                    <include name="createNewOpportunityTest" />
+                    <include name="deleteOpportunityTest" />
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite>

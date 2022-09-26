@@ -1,20 +1,24 @@
 package modals;
 
-import elements.AccountDropDown;
-import elements.AccountInput;
-import elements.AccountSearchInput;
-import elements.AccountTextarea;
+import enums.elements.AccountDropDown;
+import enums.elements.AccountInput;
+import enums.elements.AccountSearchInput;
+import enums.elements.AccountTextarea;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import models.Account;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class NewAccountModal extends BaseModal {
 
     public NewAccountModal(WebDriver driver) {
         super(driver);
     }
 
+    @Step("Filling Account form")
     public void fillForm(Account inputAccount) {
-
+        log.debug("Filling new Account form");
         new AccountDropDown(driver, "Type").selectByVisibleText(inputAccount.getType().name);
         new AccountDropDown(driver, "Industry").selectByVisibleText(inputAccount.getIndustry().name);
 

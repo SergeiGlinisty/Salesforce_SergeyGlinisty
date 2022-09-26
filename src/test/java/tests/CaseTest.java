@@ -1,44 +1,36 @@
 package tests;
 
-import com.github.javafaker.Faker;
-import enums.Status;
-import modals.NewCaseModal;
-import modals.NewOpportunityModal;
 import models.Case;
-import models.Opportunity;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pages.cases.CasePage;
-import pages.cases.CasesDetailsPage;
-import pages.opportunities.OpportunitiesDetailsPage;
-import pages.opportunities.OpportunitiesPage;
 
-import static constants.Constants.*;
-import static constants.Constants.DATA;
 import static constants.Constants.NewLead.DESCRIPTION;
 import static constants.Constants.NewLead.TITLE;
 import static enums.CaseOrigin.TWITTER;
 import static enums.Priority.HIGH;
 import static enums.Priority.MEDIUM;
-import static enums.Stage.QUALIFICATION;
 import static enums.Status.CLOSED;
 import static enums.Status.OPEN;
 
 public class CaseTest extends BaseTest {
 
-    @BeforeClass
-    public void initialise() {
+    @AfterMethod(onlyForGroups = {"CreatingNewCase", "UpdatingCase"})
+    public void deleteCase() throws InterruptedException {
 
-        casePage = new CasePage(driver);
-        casesDetailsPage = new CasesDetailsPage(driver);
-        newCaseModal = new NewCaseModal(driver);
-
-
+        homePage.openCaseTab();
+        casePage.waitForPageLoaded();
+        casePage.waitForEntityDropdownIcon();
+        Thread.sleep(5000);
+        casePage.clickEntityDropdownIconJs();
+        casePage.clickDeleteEntityButtonJs();
+        casePage.waitConfirmDeleteEntityButton();
+        casePage.clickToConfirmToDeleteEntityJs();
+        casePage.waitForDeleteText();
     }
 
-    @Test
-    public void createNewCase() {
+    @Test(description = "Creating a new Case test", groups = {"Smoke", "CreatingNewCase"})
+    public void createNewCaseTest() {
 
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
@@ -73,55 +65,93 @@ public class CaseTest extends BaseTest {
 
     }
 
-    @Test
-    public void positiveUpdateCase() {
+    @Test(description = "Checking the update Case test", groups = {"Smoke", "UpdatingCase"})
+    public void positiveUpdateCaseTest() throws InterruptedException {
 
-        loginPage.setUserName(USERNAME);
-        loginPage.setPassword(PASSWORD);
-        loginPage.clickLoginButton();
         homePage.waitForPageLoaded();
         homePage.openCaseTab();
         casePage.waitForPageLoaded();
-        casePage.clickCheckboxIcon();
-        casePage.clickUpdateCaseButton();
+        casePage.clickNewButton();
+        newCaseModal.waitForPageLoaded();
+
 
         Case testCase = Case.builder()
+                .caseOrigin(TWITTER)
+                .status(OPEN)
+                .priority(HIGH)
+                .subject(TITLE)
+                .description(DESCRIPTION)
+                .build();
+
+
+        newCaseModal.fillForm(testCase);
+        newCaseModal.clickSaveButton();
+        homePage.openCaseTab();
+        Thread.sleep(5000);
+        casePage.waitForPageLoaded();
+        casePage.waitForCheckboxeLoaded();
+        casePage.clickCheckboxIcon();
+        casePage.clickUpdateCaseButtonJs();
+
+        Case UpdatingTestCase = Case.builder()
                 .status(CLOSED)
                 .priority(MEDIUM)
                 .build();
 
-        Case expectedCase = Case.builder()
+        Case expectedUpdatingCase = Case.builder()
                 .status(CLOSED)
                 .priority(MEDIUM)
                 .subject(TITLE)
                 .description(DESCRIPTION)
                 .build();
 
-        newCaseModal.fillFormUpdate(testCase);
+        newCaseModal.fillFormUpdate(UpdatingTestCase);
         casePage.clickSaveButtonToUpdate();
         Assert.assertTrue(casePage.isPopupPresentPositiveUpdate());
+        casePage.waitClickCase();
         casePage.clickCase();
-        Assert.assertEquals(expectedCase, casesDetailsPage.getCaseInfo());
+        Assert.assertEquals(expectedUpdatingCase, casesDetailsPage.getCaseInfo());
+
     }
 
-    @Test
-    public void deleteCase(){
 
-        loginPage.setUserName(USERNAME);
-        loginPage.setPassword(PASSWORD);
-        loginPage.clickLoginButton();
+    @Test(description = "Checking the delete Case test", groups = {"Smoke"})
+    public void deleteCaseTest() throws InterruptedException {
+
         homePage.waitForPageLoaded();
         homePage.openCaseTab();
         casePage.waitForPageLoaded();
-        casePage.clickEntityDropdownIcon();
-        casePage.clickDeleteEntityButton();
-        casePage.clickToConfirmToDeleteEntity();
+        casePage.clickNewButton();
+        newCaseModal.waitForPageLoaded();
+
+
+        Case testCase = Case.builder()
+                .caseOrigin(TWITTER)
+                .status(OPEN)
+                .priority(HIGH)
+                .subject(TITLE)
+                .description(DESCRIPTION)
+                .build();
+
+
+        newCaseModal.fillForm(testCase);
+        newCaseModal.clickSaveButton();
+        homePage.openCaseTab();
+        Thread.sleep(5000);
+        casePage.waitForEntityDropdownIcon();
+        casePage.clickEntityDropdownIconJs();
+        casePage.clickDeleteEntityButtonJs();
+        casePage.waitConfirmDeleteEntityButton();
+        casePage.clickToConfirmToDeleteEntityJs();
         casePage.waitForDeleteText();
         Assert.assertTrue(casePage.isPopupPresentDelete());
+        Assert.assertTrue(casePage.isEmptyText());
     }
 
-    @Test (description = "negative Update test", groups = {"Negative"})
-    public void negativeUpdateCase() {
+
+    @Test(description = "negative Update test", groups = {"Negative"})
+    public void negativeUpdateCaseTest() {
+
 
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
@@ -132,5 +162,6 @@ public class CaseTest extends BaseTest {
         casePage.clickUpdateCaseButton();
         Assert.assertTrue(casePage.isPopupPresentNegativeUpdate());
     }
+
 
 }

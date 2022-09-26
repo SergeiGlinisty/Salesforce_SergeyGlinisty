@@ -15,6 +15,7 @@ pipeline {
          choice(choices: ['Chrome', 'Edge', 'Yandex'], description: 'Select a browser', name: 'BROWSER')
          string(name: 'SUITE_NAME', defaultValue: 'NegativeTest.xml')
 
+
          gitParameter( branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH')
   }
 

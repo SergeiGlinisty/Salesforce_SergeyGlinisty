@@ -1,10 +1,12 @@
 package modals;
 
-import elements.ContactSearchInput;
-import elements.LightningInput;
+import enums.elements.ContactSearchInput;
+import enums.elements.LightningInput;
+import lombok.extern.log4j.Log4j2;
 import models.Contact;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class NewContactModal extends BaseModal {
 
     public NewContactModal(WebDriver driver) {
@@ -13,6 +15,7 @@ public class NewContactModal extends BaseModal {
 
 
     public void fillForm(Contact inputContact) {
+        log.debug("Filling new Contact form");
         new LightningInput(driver, "Last Name").setValue(inputContact.getLastName());
         new ContactSearchInput(driver, "Account Name").setValue(inputContact.getAccountName());
         new LightningInput(driver, "Title").setValue(inputContact.getTitle());

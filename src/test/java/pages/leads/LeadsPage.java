@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import pages.EntityBasePage;
 
 public class LeadsPage extends EntityBasePage {
-    public final static By ICON_LOCATOR = By.xpath("//span[text()='Leads']/parent::div");
-    public final static By NEW_LEAD = By.xpath("//a[@target='_blank']");
+    private final static By ICON_LOCATOR = By.xpath("//span[text()='Leads']/parent::div");
+    private final static By NEW_LEAD = By.xpath("//a[@target='_blank']");
 
 
     public LeadsPage(WebDriver driver) {
