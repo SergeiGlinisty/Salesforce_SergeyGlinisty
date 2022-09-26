@@ -152,6 +152,7 @@ public class CaseTest extends BaseTest {
     @Test(description = "negative Update test", groups = {"Negative"})
     public void negativeUpdateCaseTest() {
 
+
         loginPage.setUserName(USERNAME);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();

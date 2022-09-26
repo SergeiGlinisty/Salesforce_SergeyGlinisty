@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Negative Tests" >
+
+<suite name="Negative Tests" parallel="classes" thread-count="2">
     <test name="Negative test">
-        <parameter name="browser" value="Chrome"/>
+        <parameter name="browser" value="Chrome" />
         <groups>
             <run>
-                <include name="Negative"/>
+                <include name="Negative" />
             </run>
         </groups>
         <packages>
             <package name="tests"/>
         </packages>
+
     </test>
     <!--  Test  -->
 </suite>
+
